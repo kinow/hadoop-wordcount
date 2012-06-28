@@ -1,0 +1,7 @@
+.project
+.classpath
+.buildpath
+.settings
+target
+test-output
+work
