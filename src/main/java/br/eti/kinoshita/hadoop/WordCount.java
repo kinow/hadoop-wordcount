@@ -83,6 +83,7 @@ public class WordCount {
     
     public static void main(String[] args) throws Exception {
         JobConf conf = new JobConf(WordCount.class);
+        conf.setJarByClass(WordCount.class);
         conf.setJobName("wordcount");
         
         conf.setOutputKeyClass(Text.class);
@@ -95,8 +96,9 @@ public class WordCount {
         conf.setInputFormat(TextInputFormat.class);
         conf.setOutputFormat(TextOutputFormat.class);
         
-        FileInputFormat.setInputPaths(conf, new Path("hdfs://chuva:9000/test/words.txt"));
-        FileOutputFormat.setOutputPath(conf, new Path("/tmp/wordcount"));
+        //FileInputFormat.setInputPaths(conf, new Path("hdfs://chuva:9000/test/leiseca."));
+        FileInputFormat.setInputPaths(conf, new Path(args[0]));
+        FileOutputFormat.setOutputPath(conf, new Path(args[1]));
         
         JobClient.runJob(conf);
     }
